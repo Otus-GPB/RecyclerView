@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5328467" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glEndMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <Space
+        android:id="@+id/spaceTop"
+        android:layout_width="6.12dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/userName"
+        app:layout_constraintTop_toTopOf="@id/userName" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,msgImage,msgText" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="userName,icScam" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        tools:src="@drawable/ic_account_base" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/H1_Medium"
+        app:layout_constraintEnd_toEndOf="@id/glEnd"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/glStart"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mr Iron Man" />
+
+    <ImageView
+        android:id="@+id/icVerifity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_verifity"
+        app:layout_constraintBottom_toBottomOf="@id/userName"
+        app:layout_constraintStart_toEndOf="@id/spaceTop"
+        app:layout_constraintTop_toTopOf="@id/userName" />
+
+    <ImageView
+        android:id="@+id/icVoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.35dp"
+        android:src="@drawable/ic_notvoice"
+        app:layout_constraintBottom_toBottomOf="@id/userName"
+        app:layout_constraintStart_toEndOf="@id/icVerifity"
+        app:layout_constraintTop_toTopOf="@id/userName" />
+
+    <ImageView
+        android:id="@+id/icScam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_scam"
+        app:layout_constraintStart_toEndOf="@id/icVoice"
+        app:layout_constraintTop_toTopOf="@id/userName"
+        app:layout_goneMarginStart="6dp" />
+
+    <ImageView
+        android:id="@+id/icDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="2.6dp"
+        android:src="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="@id/msgTime"
+        app:layout_constraintEnd_toStartOf="@id/msgTime"
+        app:layout_constraintTop_toTopOf="@id/msgTime"
+        app:layout_goneMarginStart="6dp" />
+
+    <TextView
+        android:id="@+id/msgTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="13dp"
+        android:ellipsize="end"
+        android:maxWidth="70dp"
+        android:singleLine="true"
+        android:textAppearance="@style/Subtitle_Thin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        tools:text="11:00AM" />
+
+    <TextView
+        android:id="@+id/msgGetCount"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/backgrnd_msgget"
+        android:gravity="center_horizontal|center_vertical"
+        android:textAppearance="@style/H2_Medium"
+        app:layout_constraintEnd_toEndOf="@id/msgTime"
+        app:layout_constraintTop_toBottomOf="@id/msgTime"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/userDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/Subtitle_Medium"
+        app:layout_constraintEnd_toEndOf="@id/userName"
+        app:layout_constraintStart_toStartOf="@id/userName"
+        app:layout_constraintTop_toBottomOf="@id/userName"
+        tools:text="Avenger" />
+
+    <ImageView
+        android:id="@+id/msgImage"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/glStart"
+        app:layout_constraintTop_toBottomOf="@id/userDetails"
+        tools:src="@drawable/ic_basemsg_photo" />
+
+    <TextView
+        android:id="@+id/msgText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/Subtitle_Thin"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/glEndMsg"
+        app:layout_constraintStart_toEndOf="@id/msgImage"
+        app:layout_constraintTop_toBottomOf="@id/userDetails"
+        tools:text="Hey! How is your back?" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
