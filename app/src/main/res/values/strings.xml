@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+    <string-array name="user_names">
+        <item>Donatello</item>
+        <item>Botticelli</item>
+        <item>Michelangelo</item>
+        <item>Raphael</item>
+        <item>Titian</item>
+        <item>Durer</item>
+        <item>Caravaggio</item>
+        <item>Rubens</item>
+        <item>Bernini</item>
+        <item>Rembrandt</item>
+        <item>Pissarro</item>
+        <item>Manet</item>
+    </string-array>
+    <string-array name="user_details">
+        <item>teacher</item>
+        <item>musician</item>
+        <item>writer</item>
+        <item>doctor</item>
+    </string-array>
+    <string-array name="user_message">
+        <item>Just five more minutes</item>
+        <item>A man after my own heart.</item>
+        <item>Whenever I’m sad, I stop being sad and be awesome instead</item>
+        <item>There are a lot of little reasons why the big things in our lives happen</item>
+    </string-array>
+    <string-array name="time_message">
+        <item>Apr</item>
+        <item>11:30AM</item>
+        <item>Mon</item>
+        <item>08:00AM</item>
+        <item>Aug,30</item>
+        <item>11:30PM</item>
+        <item>Fri</item>
+    </string-array>
+    <string-array name="image_load">
+        <item>Apr</item>
+        <item>11:30AM</item>
+        <item>Mon</item>
+        <item>08:00AM</item>
+        <item>Aug,30</item>
+        <item>11:30PM</item>
+        <item>Fri</item>
+    </string-array>
 </resources>
