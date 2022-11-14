@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Headline_16px_Medium" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_medium</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Regular_15px" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="Subtitle_14px_Medium" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_medium</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+    <style name="Subtitle_13px" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="Caption_13px_Medium" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_medium</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
