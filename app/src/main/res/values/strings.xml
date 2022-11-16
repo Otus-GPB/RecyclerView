@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+
+    <!--    regular_item begin-->
+    <string name="description_avatar">User\'s photo</string>
+    <string name="description_pinned">Pinned to the screen</string>
+    <string name="description_OK">OK</string>
+    <string name="description_mail">mail</string>
+    <string name="archive">Archive</string>
+    <!--    regular_item end-->
 </resources>

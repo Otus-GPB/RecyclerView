@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    regular_item-->
+    <!--    avatar-->
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--    textView-->
+    <style name="TelegramRegularItemTextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TelegramRegularItemTextAppearance.Title" parent="TelegramRegularItemTextAppearance">
+        <item name="android:textColor">@color/nero</item>
+        <item name="android:textSize">@dimen/title_font_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TelegramRegularItemTextAppearance.Author" parent="TelegramRegularItemTextAppearance">
+        <item name="android:textColor">@color/payne_grey</item>
+        <item name="android:textSize">@dimen/author_font_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TelegramRegularItemTextAppearance.Message" parent="TelegramRegularItemTextAppearance">
+        <item name="android:textColor">@color/manatee</item>
+        <item name="android:textSize">@dimen/message_font_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>
