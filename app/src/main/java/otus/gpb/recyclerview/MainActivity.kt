@@ -38,6 +38,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(this)
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy > 0 &&
+                        (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                        == conversationAdapter.itemCount - 1
+                    ) {
+                        conversationAdapter.addItems(repo.getItems())
+                    }
+                }
+            })
         }
         conversationAdapter.submitList(repo.getItems())
     }

@@ -4,112 +4,63 @@ import otus.gpb.recyclerview.R
 import otus.gpb.recyclerview.model.Conversation
 import otus.gpb.recyclerview.model.Message
 import java.util.*
+import kotlin.random.Random
 
 class ConversationRepository {
-    private val items = mutableListOf(
-        Conversation(
-            id = 1L,
-            username = "Pizza",
-            userDetails = "jija",
-            userAvatar = R.drawable.avatar_1,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = R.drawable.preview,
-                text = "Yes, they are necessary",
-                isRead = false,
-                isMine = false
-            ),
-            newMessagesCount = 3,
-            isVip = false,
-            isMuted = true,
-            isScam = false
-        ),
-        Conversation(
-            id = 2L,
-            username = "Elon",
-            userDetails = null,
-            userAvatar = R.drawable.avatar_2,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = null,
-                text = "I love /r/Reddit!",
-                isRead = false,
-                isMine = false
-            ),
-            newMessagesCount = 0,
-            isVip = false,
-            isMuted = true,
-            isScam = false
-        ),
-        Conversation(
-            id = 3L,
-            username = "Pasha",
-            userDetails = null,
-            userAvatar = R.drawable.avatar_3,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = null,
-                text = "How are u?",
-                isRead = false,
-                isMine = false
-            ),
-            newMessagesCount = 0,
-            isVip = true,
-            isMuted = true,
-            isScam = false
-        ),
-        Conversation(
-            id = 4L,
-            username = "Telegram Support",
-            userDetails = "Support",
-            userAvatar = R.drawable.avatar_4,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = null,
-                text = "Yes it happened.",
-                isRead = false,
-                isMine = false
-            ),
-            newMessagesCount = 5,
-            isVip = true,
-            isMuted = false,
-            isScam = false
-        ),
-        Conversation(
-            id = 4L,
-            username = "Karina",
-            userDetails = null,
-            userAvatar = R.drawable.avatar_5,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = null,
-                text = "Okay",
-                isRead = false,
-                isMine = true
-            ),
-            newMessagesCount = 1,
-            isVip = false,
-            isMuted = false,
-            isScam = false
-        ),
-        Conversation(
-            id = 5L,
-            username = "Marilyn",
-            userDetails = null,
-            userAvatar = R.drawable.avatar_5,
-            lastMessage = Message(
-                time = Date(System.currentTimeMillis()),
-                image = null,
-                text = "Will it ever happened",
-                isRead = true,
-                isMine = true
-            ),
-            newMessagesCount = 1,
-            isVip = false,
-            isMuted = false,
-            isScam = true
-        ),
+    private val names = listOf(
+        "Dmitry",
+        "Pasha",
+        "Andrew",
+        "Sonya",
+        "Julia",
+        "Svetlana",
+        "Vadim",
+        "Nikolay",
+        "Ivan",
+        "Tim",
+        "Albert",
+        "Lena",
+        "Mila",
+        "Ksenia",
+        "Telegram Support"
     )
+    private val details = listOf("", "Support", "Friend")
+    private val texts = listOf(
+        "Yes, they are necessary",
+        "I love /r/Reddit!",
+        "How are u?",
+        "Yes it happened.",
+        "Will it ever happened",
+        "Okay",
+        "Nope",
+        "I hope"
+    )
+    private val avatars =
+        listOf(R.drawable.avatar_1, R.drawable.avatar_2, R.drawable.avatar_3, R.drawable.avatar_4, R.drawable.avatar_5)
+    private val previews = listOf(null, R.drawable.preview)
+    private var lastId = 0L
 
-    fun getItems(): List<Conversation> = items
+    fun getItems(): List<Conversation> = generateNextConversations()
+
+    private fun generateNextConversations(): List<Conversation> {
+        return (1..10).map {
+            Conversation(
+                id = ++lastId,
+                username = names.random(),
+                userDetails = details.random(),
+                userAvatar = avatars.random(),
+                Message(
+                    time = Date(System.currentTimeMillis()),
+                    image = previews.random(),
+                    text = texts.random(),
+                    isRead = Random.nextBoolean(),
+                    isMine = Random.nextBoolean()
+                ),
+                newMessagesCount = Random.nextInt(4),
+                isVip = Random.nextBoolean(),
+                isMuted = Random.nextBoolean(),
+                isScam = Random.nextBoolean()
+            )
+        }
+    }
 }

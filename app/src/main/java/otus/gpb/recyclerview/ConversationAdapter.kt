@@ -39,7 +39,7 @@ class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.Conver
                 textViewCount.visible(item.newMessagesCount > 0)
                 textViewMessage.text = item.lastMessage?.text.orEmpty()
                 textViewUserDetails.text = item.userDetails
-                textViewUserDetails.visible(item.userDetails != null)
+                textViewUserDetails.visible(!item.userDetails.isNullOrBlank())
                 imageMuted.visible(item.isMuted)
                 imageScam.visible(item.isScam)
                 imageRead.setImageResource(if (item.lastMessage?.isRead == true) R.drawable.ic_readed else R.drawable.ic_recieved)
@@ -62,5 +62,12 @@ class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.Conver
             removeAt(position)
         }
        submitList(items)
+    }
+
+    fun addItems(items: List<Conversation>) {
+        val list = currentList.toMutableList().apply {
+            addAll(items)
+        }
+        submitList(list)
     }
 }
