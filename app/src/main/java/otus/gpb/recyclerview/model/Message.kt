@@ -1,10 +1,11 @@
 package otus.gpb.recyclerview.model
 
-import java.time.LocalDateTime
+import java.util.*
 
 data class Message(
-    val time: LocalDateTime,
-    val image: String? = null,
+    val time: Date,
+    val image: Int? = null,
     val text: String? = null,
-    val isRead: Boolean = false
+    val isRead: Boolean = false,
+    val isMine: Boolean = false,
 )

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageAvatar"
         android:layout_width="57dp"
         android:layout_height="57dp"
         android:layout_marginStart="10dp"
@@ -23,7 +23,7 @@
         android:layout_marginStart="12dp"
         android:maxLines="1"
         android:textAppearance="@style/Headline_16px_Medium"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageAvatar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Pizza" />
 
@@ -102,15 +102,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewUsername"
         tools:text="Support" />
 
+
+    <ImageView
+        android:id="@+id/imagePreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/preview"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewMessage"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsername"
+        app:layout_constraintTop_toTopOf="@+id/textViewMessage" />
+
     <TextView
         android:id="@+id/textViewMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:textAppearance="@style/Regular_15px"
         android:maxLines="1"
+        android:layout_marginStart="6dp"
+        app:layout_goneMarginStart="0dp"
+        android:textAppearance="@style/Regular_15px"
         app:layout_constraintEnd_toStartOf="@+id/textViewCount"
-        app:layout_constraintStart_toStartOf="@+id/textViewUsername"
+        app:layout_constraintStart_toEndOf="@+id/imagePreview"
         app:layout_constraintTop_toBottomOf="@+id/textViewUserDetails"
         tools:text="Will it ever happen" />
 

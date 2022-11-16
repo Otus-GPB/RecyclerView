@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import otus.gpb.recyclerview.databinding.LayoutConversationItemBinding
 import otus.gpb.recyclerview.extensions.visible
 import otus.gpb.recyclerview.model.Conversation
+import java.text.SimpleDateFormat
 
 class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.ConversationViewHolder>(DiffCallback) {
     private lateinit var layoutInflater: LayoutInflater
@@ -25,10 +26,15 @@ class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.Conver
         layoutInflater = LayoutInflater.from(recyclerView.context)
     }
 
-    class ConversationViewHolder(private val binding: LayoutConversationItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ConversationViewHolder(private val binding: LayoutConversationItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private val dateFormat = SimpleDateFormat("HH:mm")
+
         fun bind(item: Conversation) {
             with(binding) {
                 textViewUsername.text = item.username
+                textViewTime.text = item.lastMessage?.time?.let { dateFormat.format(it) }
+                imageAvatar.setImageResource(item.userAvatar ?: 0)
                 textViewCount.text = item.newMessagesCount.toString()
                 textViewCount.visible(item.newMessagesCount > 0)
                 textViewMessage.text = item.lastMessage?.text.orEmpty()
@@ -37,7 +43,9 @@ class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.Conver
                 imageMuted.visible(item.isMuted)
                 imageScam.visible(item.isScam)
                 imageRead.setImageResource(if (item.lastMessage?.isRead == true) R.drawable.ic_readed else R.drawable.ic_recieved)
-                imageRead.visible(item.lastMessage != null)
+                imageRead.visible(item.lastMessage?.isMine == true)
+                imagePreview.visible(item.lastMessage?.image != null)
+                imagePreview.setImageResource(item.lastMessage?.image ?: 0)
             }
         }
     }
