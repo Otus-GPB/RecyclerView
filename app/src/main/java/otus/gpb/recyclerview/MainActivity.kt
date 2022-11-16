@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
             val swipeToDeleteCallback = object : SwipeToDeleteListener(this@MainActivity) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    conversationAdapter.removeItem(viewHolder.adapterPosition)
                 }
             }
 

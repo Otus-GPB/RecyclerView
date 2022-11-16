@@ -56,4 +56,11 @@ class ConversationAdapter : ListAdapter<Conversation, ConversationAdapter.Conver
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
         holder.bind(getItem(holder.adapterPosition))
     }
+
+    fun removeItem(position: Int) {
+        val items = currentList.toMutableList().apply {
+            removeAt(position)
+        }
+       submitList(items)
+    }
 }
