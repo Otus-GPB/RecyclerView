@@ -1,9 +1,12 @@
 package otus.gpb.recyclerview
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.divider.MaterialDividerItemDecoration
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,10 +15,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val recycler = findViewById<RecyclerView>(R.id.recyclerView)
-        recycler.layoutManager = LinearLayoutManager(this)
+
+        val layoutManager = LinearLayoutManager(this)
+
+        recycler.layoutManager = layoutManager
+        recycler.addItemDecoration(createDivider(this, layoutManager))
         recycler.adapter = ChatAdapter(generateChat())
+    }
 
+    private fun createDivider(
+        context: Context,
+        layoutManager: LinearLayoutManager
+    ): RecyclerView.ItemDecoration {
+        val dividerItemDecoration = MaterialDividerItemDecoration(
+            context,
+            layoutManager.orientation
+        )
 
+        dividerItemDecoration.setDividerInsetStartResource(this, R.dimen.divider_offset)
+        dividerItemDecoration.setDividerColorResource(this, R.color.light_grey)
+        dividerItemDecoration.setDividerThicknessResource(this, R.dimen.divider_thickness)
+
+        return dividerItemDecoration
     }
 
     private fun generateChat(): List<Chat> =
@@ -34,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 isMuted = true,
                 dateTime = "12:44 AM",
                 image = R.drawable.ic_elon_avatar,
-                ),
+            ),
             Chat(
                 nickname = "Pasha",
                 lastMessage = "How are u?",
