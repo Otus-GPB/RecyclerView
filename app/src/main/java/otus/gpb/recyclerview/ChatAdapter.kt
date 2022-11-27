@@ -7,8 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ChatAdapter(private val dataSet: List<Chat>) :
+class ChatAdapter(items: List<Chat>) :
     RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+
+    private val dataSet: MutableList<Chat> = mutableListOf()
+
+    init {
+        dataSet.addAll(items)
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val avatar: ImageView
@@ -58,7 +64,6 @@ class ChatAdapter(private val dataSet: List<Chat>) :
             } else {
                 additionalInfo.text = additionalInfoValue
                 additionalInfo.visibility = View.VISIBLE
-
             }
 
             isScam.visibility = checkAndSetVisibility (element.isScam)
@@ -78,6 +83,12 @@ class ChatAdapter(private val dataSet: List<Chat>) :
                 MessageStatus.READ -> sended.setImageResource(R.drawable.ic_read)
             }
         }
+    }
+
+    public fun addItems(items: List<Chat>) {
+        val startPosition = dataSet.size
+        dataSet.addAll(items)
+        notifyItemRangeInserted(startPosition, items.size)
     }
 
     override fun getItemCount(): Int = dataSet.size

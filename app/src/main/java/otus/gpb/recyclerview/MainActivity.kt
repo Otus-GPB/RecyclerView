@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.google.android.material.divider.MaterialDividerItemDecoration
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +20,20 @@ class MainActivity : AppCompatActivity() {
 
         recycler.layoutManager = layoutManager
         recycler.addItemDecoration(createDivider(this, layoutManager))
+        recycler.addOnScrollListener(createOnScrollListener())
         recycler.adapter = ChatAdapter(generateChat())
+    }
+
+    private fun createOnScrollListener(): OnScrollListener = object : OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (dy > 0 && (recyclerView.layoutManager as LinearLayoutManager)
+                    .findLastCompletelyVisibleItemPosition() ==
+                (recyclerView.layoutManager as LinearLayoutManager).itemCount - 3
+            ) {
+                (recyclerView.adapter as ChatAdapter).addItems(generateChat())
+            }
+        }
     }
 
     private fun createDivider(
@@ -64,13 +77,11 @@ class MainActivity : AppCompatActivity() {
                 dateTime = "Fri",
                 image = R.drawable.ic_pasha_avatar
             ),
-
             Chat(
                 nickname = "Empty",
                 lastMessage = "",
                 dateTime = "Thu",
                 messageStatus = MessageStatus.READ
-
             ),
             Chat(
                 nickname = "Telegram Support",
@@ -95,7 +106,24 @@ class MainActivity : AppCompatActivity() {
                 dateTime = "May 02",
                 messageStatus = MessageStatus.READ,
                 image = R.drawable.ic_marilyn_avatar
+            ),
+            Chat(
+                nickname = "Empty",
+                lastMessage = "",
+                dateTime = "Wed",
+                messageStatus = MessageStatus.NONE
+            ),
+            Chat(
+                nickname = "Empty",
+                lastMessage = "",
+                dateTime = "Thu",
+                messageStatus = MessageStatus.READ
+            ),
+            Chat(
+                nickname = "Empty",
+                lastMessage = "",
+                dateTime = "Fri",
+                messageStatus = MessageStatus.SENDED
             )
         )
-
 }
