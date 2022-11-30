@@ -50,7 +50,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
             return
         }
 
-        // Draw the red delete background
+        // Draw the delete background
         background.color = backgroundColor
         background.setBounds(
             itemView.right + dX.toInt(),
@@ -60,14 +60,14 @@ abstract class SwipeToDeleteCallback(context: Context) :
         )
         background.draw(c)
 
-        // Calculate position of delete icon
+        // Calculate position of icon
         val deleteIconTop = itemView.top + (itemHeight - intrinsicHeight!!) / 2
         val deleteIconMargin = (itemHeight - intrinsicHeight) / 2
         val deleteIconLeft = itemView.right - deleteIconMargin - intrinsicWidth!!
         val deleteIconRight = itemView.right - deleteIconMargin
         val deleteIconBottom = deleteIconTop + intrinsicHeight
 
-        // Draw the delete icon
+        // Draw the icon
         deleteIcon?.setBounds(deleteIconLeft, deleteIconTop, deleteIconRight, deleteIconBottom)
         deleteIcon?.draw(c)
 
