@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
                 if (dy >= 0 && tempLayout.findLastVisibleItemPosition() >= tempLayout.itemCount - 1) {
 
                     val newItemsMain = mutableListOf<Chat>()
-                    newItemsMain.addAll(Generator.generate())
+                    newItemsMain.addAll(adapter.currentList)
+                    newItemsMain.addAll(Generator.generate2())
                     adapter.submitList(newItemsMain)
                 }
             }

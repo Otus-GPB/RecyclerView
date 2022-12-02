@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.Rect
-import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -79,13 +78,13 @@ abstract class SwipeToDeleteCallBack internal constructor(private val context: C
 
         val paintText = Paint()
         paintText.color = archiveColor
-        paintText.typeface = Typeface.DEFAULT_BOLD
         paintText.textSize = convertDpToPixel(context, 13).toFloat()
         c.drawText(
             archiveText.toString(),
             viewHolder.itemView.right.toFloat() - convertDpToPixel(context, 44 + 20),
             viewHolder.itemView.top.toFloat() + convertDpToPixel(context, 70),
-            paintText)
+            paintText
+        )
     }
 
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {

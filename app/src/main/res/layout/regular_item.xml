@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:ellipsize="end"
         android:lines="1"
         android:textAppearance="@style/TelegramRegularItemTextAppearance.Title"
@@ -34,6 +35,18 @@
         app:layout_constraintStart_toEndOf="@id/iv_regular_item_avatar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem" />
+
+    <ImageView
+        android:id="@+id/iv_regular_silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/silent"
+        android:src="@drawable/silent"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@id/tv_regular_item_title"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_regular_item_author"

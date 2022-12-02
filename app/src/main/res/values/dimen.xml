@@ -3,4 +3,5 @@
     <dimen name="title_font_size">16sp</dimen>
     <dimen name="author_font_size">15sp</dimen>
     <dimen name="message_font_size">15sp</dimen>
+    <dimen name="marginEnd">8dp</dimen>
 </resources>
