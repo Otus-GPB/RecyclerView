@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import otus.gpb.recyclerview.R
 import otus.gpb.recyclerview.model.*
 import otus.gpb.recyclerview.utils.DateHelper
+import otus.gpb.recyclerview.utils.visibility
 
 class ChatAdapter(
     private val currentUserId: Long
@@ -63,9 +64,9 @@ class ChatViewHolder(
 
     fun bind(chat: Chat, currentUserId: Long) {
         // Т.к. RecyclerView в процессе работы переиспользует ViewHolder, выставляем оба состояния
-        chatIconMuted.visibility = if (chat.isMuted) View.VISIBLE else View.GONE
-        chatIconScam.visibility = if (chat.isScam) View.VISIBLE else View.GONE
-        chatIconOfficial.visibility = if (chat.isOfficial) View.VISIBLE else View.GONE
+        chatIconMuted.visibility = chat.isMuted.visibility()
+        chatIconScam.visibility = chat.isScam.visibility()
+        chatIconOfficial.visibility = chat.isOfficial.visibility()
         chatLastMessage.text = chat.lastMessage.text
         chatLastMessageTime.text = DateHelper.dateToText(chat.lastMessage.sendTime)
         chat.lastMessage.attachments.apply {

@@ -5,11 +5,12 @@ import java.util.*
 
 class DateHelper {
     companion object {
-        private const val DAY_MS = 86400000
+        private const val DAY_MS = 86400000L
 
-        val duringLastDay = Date()
-        val duringLastWeek = Date(duringLastDay.time - DAY_MS * 2)
-        val somewhereInThePast = Date(duringLastDay.time - DAY_MS * 10)
+        val duringLastDayExample = Date()
+        val duringLastWeekExample = Date(duringLastDayExample.time - DAY_MS * 2)
+        val duringLastYearExample = Date(duringLastDayExample.time - DAY_MS * 128)
+        val somewhereInThePastExample = Date(duringLastDayExample.time - DAY_MS * 370)
 
         fun dateToText(date: Date): String {
             val currentDate = Date()
@@ -20,7 +21,9 @@ class DateHelper {
                     .format(date.time)
                 days < 7 -> SimpleDateFormat("EEE", Locale.getDefault())
                     .format(date.time)
-                else -> SimpleDateFormat("MMM dd", Locale.getDefault())
+                days < 365 -> SimpleDateFormat("MMM dd", Locale.getDefault())
+                    .format(date.time)
+                else -> SimpleDateFormat(" MMM dd, yyyy", Locale.getDefault())
                     .format(date.time)
             }
         }

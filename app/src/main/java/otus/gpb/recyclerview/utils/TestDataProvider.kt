@@ -49,7 +49,7 @@ class TestDataProvider {
 
         private val message1 = Message(
             sender = user5,
-            sendTime = DateHelper.duringLastDay,
+            sendTime = DateHelper.duringLastDayExample,
             readStatus = ReadStatus.READ,
             text = "Yes, they are necessary",
             attachments = listOf(attachment1)
@@ -57,7 +57,7 @@ class TestDataProvider {
 
         private val message2 = Message(
             sender = user1,
-            sendTime = DateHelper.duringLastWeek,
+            sendTime = DateHelper.duringLastWeekExample,
             readStatus = ReadStatus.READ,
             text = "I love /r/Reddit!",
             attachments = listOf()
@@ -65,7 +65,7 @@ class TestDataProvider {
 
         private val message3 = Message(
             sender = user2,
-            sendTime = DateHelper.somewhereInThePast,
+            sendTime = DateHelper.duringLastYearExample,
             readStatus = ReadStatus.READ,
             text = "How are you?",
             attachments = listOf()
@@ -73,7 +73,7 @@ class TestDataProvider {
 
         private val message4 = Message(
             sender = user6,
-            sendTime = DateHelper.duringLastDay,
+            sendTime = DateHelper.somewhereInThePastExample,
             readStatus = ReadStatus.READ,
             text = "Yes it happened.",
             attachments = listOf()
@@ -81,7 +81,7 @@ class TestDataProvider {
 
         private val message5 = Message(
             sender = currentUser,
-            sendTime = DateHelper.duringLastWeek,
+            sendTime = DateHelper.duringLastDayExample,
             readStatus = ReadStatus.SENT,
             text = "Okay",
             attachments = listOf()
@@ -89,7 +89,7 @@ class TestDataProvider {
 
         private val message6 = Message(
             sender = currentUser,
-            sendTime = DateHelper.somewhereInThePast,
+            sendTime = DateHelper.duringLastWeekExample,
             readStatus = ReadStatus.READ,
             text = "Will it ever happen",
             attachments = listOf()

@@ -13,6 +13,7 @@ import otus.gpb.recyclerview.ui.adapter.ChatAdapter
 import otus.gpb.recyclerview.ui.decoration.ChatItemDecoration
 import otus.gpb.recyclerview.ui.decoration.SwipeToDismissCallback
 import otus.gpb.recyclerview.utils.TestDataProvider
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var chatAdapter: ChatAdapter
 
-    private var chats = TestDataProvider.chats()//.plus(DummyDataProvider.chats())
+    private var chats = TestDataProvider.chats()
     private val onScrollListener = object: RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "Added chats. Got ${chatAdapter.itemCount}")
     }
     fun removeChat(position: Int) {
-        val newChats = ArrayList<Chat>()
+        val newChats = LinkedList<Chat>()
         newChats.addAll(chatAdapter.currentList)
         newChats.removeAt(position)
         chatAdapter.submitList(newChats)

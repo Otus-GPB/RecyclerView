@@ -4,11 +4,14 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.*
 import android.util.TypedValue
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import otus.gpb.recyclerview.R
+import otus.gpb.recyclerview.utils.dpToPx
+import otus.gpb.recyclerview.utils.spToPx
 
 
 abstract class SwipeToDismissCallback(
@@ -20,7 +23,6 @@ abstract class SwipeToDismissCallback(
 ): ItemTouchHelper.Callback() {
 
     companion object {
-        private val TEXT_SIZE_SP = 13f
         private val TEXT_MARGIN_TOP_DP = 9f
         private val TEXT_MARGIN_END_DP = 20f
 
@@ -28,13 +30,7 @@ abstract class SwipeToDismissCallback(
         private val ICON_MARGIN_TOP_DP = 18f
         private val ICON_MARGIN_FINISH_DP = 32f
     }
-
-    fun Float.spToPx(context: Context) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-        this, context.resources.displayMetrics)
-    fun Float.dpToPx(context: Context) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-        this, context.resources.displayMetrics)
-
-    private val TEXT_SIZE_PX = TEXT_SIZE_SP.spToPx(context)
+    
     private val TEXT_MARGIN_TOP_PX = TEXT_MARGIN_TOP_DP.dpToPx(context)
     private val TEXT_MARGIN_END_PX = TEXT_MARGIN_END_DP.dpToPx(context)
 
@@ -54,13 +50,16 @@ abstract class SwipeToDismissCallback(
         color = bgColor
     }
     private val textBoundsRect = Rect()
-    private val textPaint = Paint().apply{
+    // Получение экземпляра Paint с примененным TextAppearance,
+    // используя промежуточный TextView
+    private val textPaint = TextView(context).apply {
+        setTextAppearance(R.style.TextAppearance_App_Caption)
+    }.paint.apply {
         color = messageColor
-        flags = Paint.ANTI_ALIAS_FLAG
-        textSize = TEXT_SIZE_PX
         textAlign = Paint.Align.CENTER
         getTextBounds(archiveText, 0, archiveText.length, textBoundsRect)
     }
+
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -98,14 +97,14 @@ abstract class SwipeToDismissCallback(
             itemView.right + dX, itemView.bottom + dY, paint)
 
         var textX = itemView.right.toFloat() + textBoundsRect.width() / 2 + TEXT_MARGIN_END_PX + dX
-        val textY = itemView.top.toFloat() + ICON_MARGIN_TOP_PX + ICON_SIZE_PX + TEXT_MARGIN_TOP_PX + TEXT_SIZE_PX
+        val textY = itemView.top.toFloat() + ICON_MARGIN_TOP_PX + ICON_SIZE_PX + TEXT_MARGIN_TOP_PX + textBoundsRect.height()
         if (textX <= itemView.width - BASELINE_MIN_MARGIN_PX)
             textX = itemView.width - BASELINE_MIN_MARGIN_PX
 
-        val iconLeft = textX - ICON_SIZE_PX / 2 ;
-        val iconTop = itemView.top + ICON_MARGIN_TOP_PX;
-        val iconRight = textX + ICON_SIZE_PX / 2;
-        val iconBottom = itemView.top + ICON_MARGIN_TOP_PX + ICON_SIZE_PX;
+        val iconLeft = textX - ICON_SIZE_PX / 2
+        val iconTop = itemView.top + ICON_MARGIN_TOP_PX
+        val iconRight = textX + ICON_SIZE_PX / 2
+        val iconBottom = iconTop + ICON_SIZE_PX
         archiveIcon?.setBounds(iconLeft.toInt(), iconTop.toInt(), iconRight.toInt(),
             iconBottom.toInt()
         )
