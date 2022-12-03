@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+    <string name="telegram_support_placeholder">Telegram Support</string>
+    <string name="sender_placeholder">Support</string>
+    <string name="last_message_placeholder">Yes it happened.</string>
+    <string name="message_counter_placeholder">1</string>
+    <string name="time_placeholder">11:38 AM</string>
+    <string name="archive">Archive</string>
 </resources>

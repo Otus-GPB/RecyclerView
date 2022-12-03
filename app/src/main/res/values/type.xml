@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- https://stackoverflow.com/questions/19691530/valid-values-for-androidfontfamily-and-what-they-map-to
+Font                     | android:fontFamily          | android:textStyle
+_________________________|_____________________________|_________________
+Roboto Thin              | sans-serif-thin             |
+Roboto Light             | sans-serif-light            |
+Roboto Regular           | sans-serif                  |
+Roboto Bold              | sans-serif                  | bold
+Roboto Medium            | sans-serif-medium           |
+Roboto Black             | sans-serif-black            |
+Roboto Condensed Light   | sans-serif-condensed-light  |
+Roboto Condensed Regular | sans-serif-condensed        |
+Roboto Condensed Medium  | sans-serif-condensed-medium |
+Roboto Condensed Bold    | sans-serif-condensed        | bold
+Noto Serif               | serif                       |
+Noto Serif Bold          | serif                       | bold
+Droid Sans Mono          | monospace                   |
+Cutive Mono              | serif-monospace             |
+Coming Soon              | casual                      |
+Dancing Script           | cursive                     |
+Dancing Script Bold      | cursive                     | bold
+Carrois Gothic SC        | sans-serif-smallcaps        |
+-->
+<resources>
+    <style name="TextAppearance.App.Imported" parent="">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:padding">0dp</item>
+        <item name="minHeight">0dp</item>
+    </style>
+
+    <style name="TextAppearance.App.Headline2" parent="TextAppearance.App.Imported">
+        <item name="android:textSize">16sp</item>
+        <item name="fontWeight">500</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TextAppearance.App.Subtitle3" parent="TextAppearance.App.Imported">
+        <item name="android:textSize">14sp</item>
+        <item name="fontWeight">500</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TextAppearance.App.Regular" parent="TextAppearance.App.Imported">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.App.Subtitle" parent="TextAppearance.App.Imported">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="fontWeight">400</item>
+    </style>
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.App.Imported">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="fontWeight">500</item>
+    </style>
+</resources>
