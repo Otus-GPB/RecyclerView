@@ -73,7 +73,7 @@ class TestDataProvider {
 
         private val message4 = Message(
             sender = user6,
-            sendTime = DateHelper.somewhereInThePastExample,
+            sendTime = DateHelper.distantPastExample,
             readStatus = ReadStatus.READ,
             text = "Yes it happened.",
             attachments = listOf()

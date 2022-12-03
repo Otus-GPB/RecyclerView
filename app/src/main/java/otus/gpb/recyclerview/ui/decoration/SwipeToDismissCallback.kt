@@ -28,7 +28,7 @@ abstract class SwipeToDismissCallback(
 
         private val ICON_SIZE_DP = 22f
         private val ICON_MARGIN_TOP_DP = 18f
-        private val ICON_MARGIN_FINISH_DP = 32f
+        private val ICON_MARGIN_END_DP = 32f
     }
     
     private val TEXT_MARGIN_TOP_PX = TEXT_MARGIN_TOP_DP.dpToPx(context)
@@ -36,7 +36,7 @@ abstract class SwipeToDismissCallback(
 
     private val ICON_SIZE_PX = ICON_SIZE_DP.dpToPx(context)
     private val ICON_MARGIN_TOP_PX = ICON_MARGIN_TOP_DP.dpToPx(context)
-    private val ICON_MARGIN_FINISH_PX = ICON_MARGIN_FINISH_DP.dpToPx(context)
+    private val ICON_MARGIN_FINISH_PX = ICON_MARGIN_END_DP.dpToPx(context)
 
     private val BASELINE_MIN_MARGIN_PX = ICON_MARGIN_FINISH_PX + ICON_SIZE_PX / 2
 

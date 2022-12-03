@@ -23,33 +23,33 @@ Dancing Script Bold      | cursive                     | bold
 Carrois Gothic SC        | sans-serif-smallcaps        |
 -->
 <resources>
-    <style name="TextAppearance.App.Imported" parent="">
+    <style name="TextAppearance.App.Strict" parent="">
         <item name="android:includeFontPadding">false</item>
         <item name="android:padding">0dp</item>
         <item name="minHeight">0dp</item>
     </style>
 
-    <style name="TextAppearance.App.Headline2" parent="TextAppearance.App.Imported">
+    <style name="TextAppearance.App.Headline2" parent="TextAppearance.App.Strict">
         <item name="android:textSize">16sp</item>
         <item name="fontWeight">500</item>
         <item name="fontFamily">sans-serif-medium</item>
     </style>
-    <style name="TextAppearance.App.Subtitle3" parent="TextAppearance.App.Imported">
+    <style name="TextAppearance.App.Subtitle3" parent="TextAppearance.App.Strict">
         <item name="android:textSize">14sp</item>
         <item name="fontWeight">500</item>
         <item name="fontFamily">sans-serif-medium</item>
     </style>
-    <style name="TextAppearance.App.Regular" parent="TextAppearance.App.Imported">
+    <style name="TextAppearance.App.Regular" parent="TextAppearance.App.Strict">
         <item name="android:textSize">15sp</item>
         <item name="fontFamily">sans-serif</item>
         <item name="fontWeight">400</item>
     </style>
-    <style name="TextAppearance.App.Subtitle" parent="TextAppearance.App.Imported">
+    <style name="TextAppearance.App.Subtitle" parent="TextAppearance.App.Strict">
         <item name="android:textSize">13sp</item>
         <item name="fontFamily">sans-serif</item>
         <item name="fontWeight">400</item>
     </style>
-    <style name="TextAppearance.App.Caption" parent="TextAppearance.App.Imported">
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.App.Strict">
         <item name="android:textSize">13sp</item>
         <item name="fontFamily">sans-serif-medium</item>
         <item name="fontWeight">500</item>

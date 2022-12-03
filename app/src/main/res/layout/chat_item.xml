@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/chat_title"
-        style="@style/TextAppearance.App.Imported"
+        style="@style/TextAppearance.App.Strict"
         android:textColor="?attr/textColor1"
         android:textAppearance="@style/TextAppearance.App.Headline2"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/TextAppearance.App.Imported"
+        style="@style/TextAppearance.App.Strict"
         android:id="@+id/chat_last_sender"
         android:textColor="?attr/textColor2"
         android:textAppearance="@style/TextAppearance.App.Subtitle"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/chat_last_sender" />
 
     <TextView
-        style="@style/TextAppearance.App.Imported"
+        style="@style/TextAppearance.App.Strict"
         android:id="@+id/chat_last_message"
         android:textColor="?attr/textColor3"
         android:textAppearance="@style/TextAppearance.App.Regular"
@@ -107,7 +107,7 @@
 
     <TextView
         android:id="@+id/chat_last_message_time"
-        style="@style/TextAppearance.App.Imported"
+        style="@style/TextAppearance.App.Strict"
         android:textAppearance="@style/TextAppearance.App.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/chat_messages_counter_bg"
-        style="@style/TextAppearance.App.Imported"
+        style="@style/TextAppearance.App.Strict"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@color/havelockBlue"
