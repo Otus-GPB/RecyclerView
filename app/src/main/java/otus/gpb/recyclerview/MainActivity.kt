@@ -3,6 +3,7 @@ package otus.gpb.recyclerview
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         recycler.layoutManager = layoutManager
         recycler.addItemDecoration(createDivider(this, layoutManager))
         recycler.addOnScrollListener(createOnScrollListener())
+        createOnSwipeListener(recycler)
         recycler.adapter = ChatAdapter(generateChat())
     }
 
@@ -35,6 +37,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun createOnSwipeListener(recyclerView: RecyclerView) =
+        ItemTouchHelper(object : SwipeToDismissCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                (recyclerView.adapter as ChatAdapter).removeItem(viewHolder.adapterPosition)
+            }
+        }).attachToRecyclerView(recyclerView)
 
     private fun createDivider(
         context: Context,

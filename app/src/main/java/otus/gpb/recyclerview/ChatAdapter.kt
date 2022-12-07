@@ -66,9 +66,9 @@ class ChatAdapter(items: List<Chat>) :
                 additionalInfo.visibility = View.VISIBLE
             }
 
-            isScam.visibility = checkAndSetVisibility (element.isScam)
-            isOfficial.visibility = checkAndSetVisibility (element.isOfficial)
-            isMuted.visibility = checkAndSetVisibility (element.isMuted)
+            isScam.visibility = checkAndSetVisibility(element.isScam)
+            isOfficial.visibility = checkAndSetVisibility(element.isOfficial)
+            isMuted.visibility = checkAndSetVisibility(element.isMuted)
             val unreadCounterValue = element.unreadCounter
             if (unreadCounterValue > 0) {
                 unreadCounter.text = unreadCounterValue.toString()
@@ -85,10 +85,15 @@ class ChatAdapter(items: List<Chat>) :
         }
     }
 
-    public fun addItems(items: List<Chat>) {
+    fun addItems(items: List<Chat>) {
         val startPosition = dataSet.size
         dataSet.addAll(items)
         notifyItemRangeInserted(startPosition, items.size)
+    }
+
+    fun removeItem(position: Int) {
+        dataSet.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun getItemCount(): Int = dataSet.size
