@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Julia"
+            android:textColor="@color/grey_dark"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:text="How are u?"
+            android:textColor="@color/grey"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/message_img_im"
             app:layout_constraintTop_toTopOf="@id/message_img_im"
@@ -103,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="12:44 AM"
+        android:textColor="@color/grey_light"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
