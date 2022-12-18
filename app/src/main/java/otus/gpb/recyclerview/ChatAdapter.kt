@@ -1,23 +1,17 @@
 package otus.gpb.recyclerview
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import java.lang.RuntimeException
 
 
 class ChatAdapter: ListAdapter<ChatItem, ChatHolder>(
     ChatItemDiffCallBack()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatHolder {
-        val layoutId = when(viewType){
-            WITH_TITLE -> R.layout.item_prewiew_title
-            WITHOUT_TITLE -> R.layout.item_preview
-            else -> throw RuntimeException("Unknown type $viewType")
-        }
         val view = LayoutInflater.from(parent.context)
-            .inflate(layoutId, parent, false )
-
+            .inflate(R.layout.item_prewiew_message, parent, false )
         return ChatHolder(view)
     }
 
@@ -27,20 +21,34 @@ class ChatAdapter: ListAdapter<ChatItem, ChatHolder>(
         holder.tvUserName.text = chatItem.userName
         holder.tvMessage.text = chatItem.message
         holder.tvTime.text = chatItem.time
+
         if(chatItem.title != ChatItem.NO_TITLE){
             holder.tvTitle.text = chatItem.title
+        }else{
+            holder.tvTitle.visibility = View.GONE
         }
+
+        if(chatItem.isVolume){
+            holder.imageViewVolume.visibility = View.GONE
+        }else{
+            holder.imageViewVolume.visibility = View.VISIBLE
+        }
+
+        if(!chatItem.isMark){
+            holder.imageViewMark.visibility = View.GONE
+        }else{
+            holder.imageViewMark.visibility = View.VISIBLE
+        }
+
+        if(chatItem.isRead){
+            holder.imageViewRead.visibility = View.GONE
+        }else{
+            holder.imageViewRead.visibility = View.VISIBLE
+        }
+        holder.imageViewUrl.setImageResource(chatItem.imageUrl ?: DEFAULT_URL)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if(getItem(position).title == ChatItem.NO_TITLE){
-            WITHOUT_TITLE
-        }else{
-            WITH_TITLE
-        }
-    }
     companion object{
-        const val WITH_TITLE = 0
-        const val WITHOUT_TITLE = 5
+        const val DEFAULT_URL = R.drawable.img_4
     }
 }

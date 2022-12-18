@@ -11,4 +11,7 @@ class ChatHolder(view: View) : RecyclerView.ViewHolder(view) {
     val tvMessage = view.findViewById<TextView>(R.id.textViewMessage)
     val tvTime = view.findViewById<TextView>(R.id.textViewTime)
     val imageViewUrl = view.findViewById<ImageView>(R.id.imageView)
+    val imageViewVolume = view.findViewById<ImageView>(R.id.imageView_audio)
+    val imageViewMark = view.findViewById<ImageView>(R.id.imageView_mark)
+    val imageViewRead = view.findViewById<TextView>(R.id.imageView_unread)
 }

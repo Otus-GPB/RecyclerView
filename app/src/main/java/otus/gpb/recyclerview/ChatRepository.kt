@@ -8,105 +8,187 @@ class ChatRepository {
     private val chatListLD = MutableLiveData<List<ChatItem>>()
     private val chatList = mutableListOf<ChatItem>()
 
-    init {
-        initChat()
-        updateChatList()
-    }
-    private fun initChat(){
+    fun generate(){
         chatList. add(
             ChatItem(
                 1,
-                "Что-то",
-                "Name",
-                "Title",
-                "Message",
-                "00:00")
+                R.drawable.img_1,
+                "Pizza",
+                "jija",
+                "Yes, they are necessary",
+                "11:38 AM",
+                isVolume = false,
+                isMark = false,
+                isRead = true
+            )
         )
         chatList. add(
             ChatItem(
                 2,
-                "Что-то",
-                "Name",
-                "Title",
-                "Message",
-                "00:00")
+                R.drawable.img_2,
+                "Elon",
+                ChatItem.NO_TITLE,
+                "I love /r/Reddit!",
+                "12:44 AM",
+                isVolume = false,
+                isMark = false,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 3,
-                "Что-то",
-                "Name",
+                R.drawable.img_3,
+                "Pasha",
                 ChatItem.NO_TITLE,
-                "Message",
-                "00:00")
+                "How are u?",
+                "Fri",
+                isVolume = false,
+                isMark = true,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 4,
-                "Что-то",
+                null,
                 "Name",
                 "Title",
                 "Message",
-                "00:00")
+                "Thu",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 5,
-                "Что-то",
-                "Name",
-                "Title",
-                "Message",
-                "00:00")
+                R.drawable.img_4,
+                "Telegram Support",
+                "Support",
+                "Yes it happened",
+                "Thu",
+                isVolume = true,
+                isMark = true,
+                isRead = false)
         )
         chatList. add(
             ChatItem(
                 6,
-                "Что-то",
-                "Name",
+                R.drawable.img_5,
+                "Karina",
                 ChatItem.NO_TITLE,
-                "Message",
-                "00:00")
+                "Okay",
+                "Wed",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 7,
-                "Что-то",
-                "Name",
-                "Title",
-                "Message",
-                "00:00")
+                R.drawable.img_6,
+                "Marilyn",
+                ChatItem.NO_TITLE,
+                "Will it ever happen",
+                "May 02",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 8,
-                "Что-то",
-                "Name",
-                "Title",
-                "Message",
-                "00:00")
+                R.drawable.img_1,
+                "Pizza",
+                "jija",
+                "Yes, they are necessary",
+                "11:38 AM",
+                isVolume = false,
+                isMark = false,
+                isRead = true
+            )
         )
         chatList. add(
             ChatItem(
                 9,
-                "Что-то",
-                "Name",
+                R.drawable.img_2,
+                "Elon",
                 ChatItem.NO_TITLE,
-                "Message",
-                "00:00")
+                "I love /r/Reddit!",
+                "12:44 AM",
+                isVolume = false,
+                isMark = false,
+                isRead = true)
         )
         chatList. add(
             ChatItem(
                 10,
-                "Что-то",
+                R.drawable.img_3,
+                "Pasha",
+                ChatItem.NO_TITLE,
+                "How are u?",
+                "Fri",
+                isVolume = false,
+                isMark = true,
+                isRead = true)
+        )
+
+        chatList. add(
+            ChatItem(
+                4,
+                null,
                 "Name",
                 "Title",
                 "Message",
-                "00:00")
+                "Thu",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
         )
+        chatList. add(
+            ChatItem(
+                5,
+                R.drawable.img_4,
+                "Telegram Support",
+                "Support",
+                "Yes it happened",
+                "Thu",
+                isVolume = true,
+                isMark = true,
+                isRead = false)
+        )
+        chatList. add(
+            ChatItem(
+                6,
+                R.drawable.img_5,
+                "Karina",
+                ChatItem.NO_TITLE,
+                "Okay",
+                "Wed",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
+        )
+        chatList. add(
+            ChatItem(
+                7,
+                R.drawable.img_6,
+                "Marilyn",
+                ChatItem.NO_TITLE,
+                "Will it ever happen",
+                "May 02",
+                isVolume = true,
+                isMark = false,
+                isRead = true)
+        )
+        updateChatList()
     }
 
     fun getChatList(): LiveData<List<ChatItem>> {
         return chatListLD
+    }
+    fun deleteItem(chatItem: ChatItem){
+        chatList.remove(chatItem)
+        updateChatList()
     }
 
     private fun updateChatList(){
