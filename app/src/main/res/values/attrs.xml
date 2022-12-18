@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorSenderName" format="color" />
+    <attr name="colorMessage" format="color" />
+    <attr name="colorTime" format="color" />
+    <attr name="colorMessageCount" format="color" />
+</resources>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatar_im"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/RecyclerViewAvatar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/avatar_im"
+        app:layout_constraintTop_toTopOf="@id/avatar_im">
+
+        <TextView
+            android:id="@+id/chat_name_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pizza"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sender_name_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Julia"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chat_name_tx" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/message_img_im"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sender_name_tx"
+            app:layout_goneMarginTop="5dp"
+            app:shapeAppearance="@style/RecyclerViewMessageImage" />
+
+        <TextView
+            android:id="@+id/message_text_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="How are u?"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/message_img_im"
+            app:layout_constraintTop_toTopOf="@id/message_img_im"
+            app:layout_goneMarginStart="0dp"
+            app:layout_goneMarginTop="5dp" />
+
+        <ImageView
+            android:id="@+id/verified_im"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/verified"
+            app:layout_constraintBottom_toBottomOf="@id/chat_name_tx"
+            app:layout_constraintStart_toEndOf="@id/chat_name_tx"
+            app:layout_constraintTop_toTopOf="@id/chat_name_tx" />
+
+        <ImageView
+            android:id="@+id/muted_im"
+            android:layout_width="10dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/muted"
+            app:layout_constraintBottom_toBottomOf="@id/chat_name_tx"
+            app:layout_constraintStart_toEndOf="@id/verified_im"
+            app:layout_constraintTop_toTopOf="@id/chat_name_tx" />
+
+        <ImageView
+            android:id="@+id/scam_im"
+            android:layout_width="44dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/scam"
+            app:layout_constraintBottom_toBottomOf="@id/chat_name_tx"
+            app:layout_constraintStart_toEndOf="@id/muted_im"
+            app:layout_constraintTop_toTopOf="@id/chat_name_tx" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/message_date_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:44 AM"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/message_status_im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/message_date_tx"
+        app:layout_constraintEnd_toStartOf="@id/message_date_tx"
+        app:layout_constraintTop_toTopOf="@id/message_date_tx" />
+
+    <FrameLayout
+        android:id="@+id/message_count_ly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/message_date_tx">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:background="@drawable/message_count_shape" />
+
+        <TextView
+            android:id="@+id/message_count_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="1"
+            android:textColor="?attr/colorOnPrimary" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
