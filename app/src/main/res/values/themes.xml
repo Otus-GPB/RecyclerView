@@ -13,4 +13,28 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Headline16pxMedium" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_medium</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">16sp</item>
+        <item name="color">@color/black</item>
+    </style>
+    <style name="Subtitle14pxMedium" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_medium</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">14sp</item>
+        <item name="color">@color/dark_gray</item>
+    </style>
+    <style name="Subtitle13px" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">13sp</item>
+        <item name="color">@color/light_gray</item>
+    </style>
+    <style name="Regular15px" parent="TextAppearance.AppCompat">
+        <item name="font">@font/roboto_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">15sp</item>
+        <item name="color">@color/gray</item>
+    </style>
 </resources>
