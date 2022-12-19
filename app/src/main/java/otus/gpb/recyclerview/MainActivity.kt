@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var chatListAdapter: ChatAdapter
 
+    var isLastPage: Boolean = false
+    var isLoading: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         val rvChatList = findViewById<RecyclerView>(R.id.recyclerView)
         chatListAdapter = ChatAdapter()
         rvChatList.adapter = chatListAdapter
-        rvChatList.layoutManager = LinearLayoutManager(
+        val myLayoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.VERTICAL,
             false)
+        rvChatList.layoutManager = myLayoutManager
         rvChatList.addItemDecoration(
             ItemDecoration(
             ContextCompat.getDrawable(this, R.drawable.line)!!,
@@ -43,20 +47,27 @@ class MainActivity : AppCompatActivity() {
         )
 
         setupSwipeListener(rvChatList)
+
         rvChatList.addOnScrollListener(
-            object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0 && (rvChatList.layoutManager as LinearLayoutManager)
-                            .findLastCompletelyVisibleItemPosition() ==
-                        (rvChatList.layoutManager as LinearLayoutManager).itemCount - 1
-                    ) {
-                        viewModel.generate()
-                    }
+            object : PaginationScrollListener(myLayoutManager) {
+
+                override fun isLastPage(): Boolean {
+                    return isLastPage
+                }
+
+                override fun isLoading(): Boolean {
+                    return isLoading
+                }
+
+                override fun loadMoreItems() {
+                    isLoading = true
+                    viewModel.generate()
+                    isLoading = false
                 }
             }
         )
     }
+
 
     private fun setupSwipeListener(rvShopList: RecyclerView?) {
         val swipeToDeleteCallback = object : SwipeToDeleteCallback(this) {

@@ -7,6 +7,7 @@ class ChatRepository {
 
     private val chatListLD = MutableLiveData<List<ChatItem>>()
     private val chatList = mutableListOf<ChatItem>()
+//    var countItem = 1
 
     fun generate(){
         chatList. add(
@@ -132,11 +133,11 @@ class ChatRepository {
                 isRead = true)
         )
 
-        chatList. add(
+        /*chatList. add(
             ChatItem(
-                4,
+                11,
                 null,
-                "Name",
+                "Name 11",
                 "Title",
                 "Message",
                 "Thu",
@@ -146,9 +147,9 @@ class ChatRepository {
         )
         chatList. add(
             ChatItem(
-                5,
+                12,
                 R.drawable.img_4,
-                "Telegram Support",
+                "Telegram Support 12",
                 "Support",
                 "Yes it happened",
                 "Thu",
@@ -158,9 +159,9 @@ class ChatRepository {
         )
         chatList. add(
             ChatItem(
-                6,
+                13,
                 R.drawable.img_5,
-                "Karina",
+                "Karina 13",
                 ChatItem.NO_TITLE,
                 "Okay",
                 "Wed",
@@ -170,16 +171,16 @@ class ChatRepository {
         )
         chatList. add(
             ChatItem(
-                7,
+                14,
                 R.drawable.img_6,
-                "Marilyn",
+                "Marilyn 14" ,
                 ChatItem.NO_TITLE,
                 "Will it ever happen",
                 "May 02",
                 isVolume = true,
                 isMark = false,
                 isRead = true)
-        )
+        )*/
         updateChatList()
     }
 
