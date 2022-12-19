@@ -28,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(recycler)
 
-
+        recycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0 && (recycler.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition() == (recycler.layoutManager as LinearLayoutManager).itemCount - 1) {
+                    adapter.addItems(ListGenerator().generate())
+                }
+            }
+        })
     }
 }

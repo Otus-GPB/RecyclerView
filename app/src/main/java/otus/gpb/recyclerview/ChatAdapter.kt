@@ -13,6 +13,11 @@ class ChatAdapter : RecyclerView.Adapter<ChatViewHolder>() {
         notifyItemRemoved(position)
     }
 
+    fun addItems(items: List<Chat>) {
+        this.items.addAll(items)
+        notifyItemInserted(itemCount)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_item, parent, false)
         return ChatViewHolder(view as ChatView)
