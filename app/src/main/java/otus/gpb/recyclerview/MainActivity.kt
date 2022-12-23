@@ -3,6 +3,7 @@ package otus.gpb.recyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,5 +21,14 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.getDrawable(this, R
             .drawable.divider)?.let { CustomChatDecorator(it) }
             ?.let { recyclerView.addItemDecoration(it) }
+
+        val swipeToDeleteCallback = object : SwipeToDeleteListener(this){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                chatAdapter.deleteItem(viewHolder.adapterPosition)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }

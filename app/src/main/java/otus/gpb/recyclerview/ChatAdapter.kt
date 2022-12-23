@@ -27,6 +27,11 @@ class ChatAdapter : RecyclerView.Adapter<ChatViewHolder>() {
         holder.createItem(currentItem)
     }
 
+    fun deleteItem(position: Int) {
+        chatList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
 
 
 }
