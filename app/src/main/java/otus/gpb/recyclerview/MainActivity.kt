@@ -2,6 +2,7 @@ package otus.gpb.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,5 +16,9 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = chatAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         chatAdapter.createChatList(generateRandomChatList())
+
+        ContextCompat.getDrawable(this, R
+            .drawable.divider)?.let { CustomChatDecorator(it) }
+            ?.let { recyclerView.addItemDecoration(it) }
     }
 }

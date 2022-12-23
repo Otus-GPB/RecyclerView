@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/photo_1" />
+        tools:src="@drawable/photo_1"/>
 
     <TextView
         android:id="@+id/chat_title"
@@ -46,7 +46,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/chat_details"
+        app:layout_constraintEnd_toStartOf="@id/message_preview"
+        app:layout_constraintStart_toStartOf="@+id/chat_title"
         app:layout_constraintTop_toBottomOf="@+id/chat_details"
         tools:src="@drawable/preview_1" />
 
@@ -55,9 +56,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/yes_they_are_necessary"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/message_image_preview"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/message_image_preview"
         app:layout_constraintTop_toTopOf="@+id/message_image_preview" />
 
