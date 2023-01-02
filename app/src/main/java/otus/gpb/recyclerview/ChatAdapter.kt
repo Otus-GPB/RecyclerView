@@ -3,93 +3,67 @@ package otus.gpb.recyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import otus.gpb.recyclerview.databinding.ChatItemBinding
 
-
-class ChatAdapter : RecyclerView.Adapter<ChatViewHolder>() {
-
-    private val chatList = mutableListOf<Chat>()
-
-    fun createChatList(list: MutableList<Chat>){
-        chatList.addAll(list)
-        notifyItemRangeInserted(0, chatList.size - 1)
+class ChatDiffCallback : DiffUtil.ItemCallback<Chat>() {
+    override fun areItemsTheSame(oldItem: Chat, newItem: Chat): Boolean {
+        return oldItem.id == newItem.id
     }
-    override fun getItemCount(): Int = chatList.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder =
-        ChatViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.chat_item, parent, false)
-        )
+    override fun areContentsTheSame(oldItem: Chat, newItem: Chat): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class ChatAdapter : ListAdapter<Chat, ChatViewHolder>(ChatDiffCallback()){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
+        return ChatViewHolder(ChatItemBinding.inflate(LayoutInflater.from(parent.context), parent,
+            false))
+    }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        val currentItem = chatList[position]
-        holder.createItem(currentItem)
-    }
-
-    fun deleteItem(position: Int) {
-        chatList.removeAt(position)
-        notifyItemRemoved(position)
+        holder.bind(getItem(position))
     }
 
     fun addItems(list: MutableList<Chat>) {
-        chatList.addAll(list)
-        notifyItemRangeInserted(chatList.size - 1, list.size - 1)
+        val newList = currentList.toMutableList().apply { addAll(list) }
+        submitList(newList)
     }
 
-
+    fun deleteItem(position: Int) {
+        val newList = currentList.toMutableList().apply { removeAt(position) }
+        submitList(newList)
+    }
 
 }
-//внести потом обратно в класс
-class ChatViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    private val userName = view.findViewById<TextView>(R.id.chat_title)
-    private val chatDetails = view.findViewById<TextView>(R.id.chat_details)
-    private val messageText = view.findViewById<TextView>(R.id.message_preview)
-    private val messageTime = view.findViewById<TextView>(R.id.message_date)
-    private val userPhoto = view.findViewById<ImageView>(R.id.chat_image)
-    private val messagePhoto = view.findViewById<ImageView>(R.id.message_image_preview)
-    private val isOfficial = view.findViewById<ImageView>(R.id.image_official)
-    private val isMuted = view.findViewById<ImageView>(R.id.image_mute)
-    private val isScam = view.findViewById<ImageView>(R.id.image_scam)
-    private val isRead = view.findViewById<ImageView>(R.id.icon_read)
-    private val newMessagesCount = view.findViewById<TextView>(R.id.messages_count)
+class ChatViewHolder(private val binding: ChatItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(chat: Chat) {
+        binding.apply {
+            //постоянные поля
+            chatImage.setImageResource(chat.userPhoto)
+            chatTitle.text = chat.userName
+            messageDate.text = chat.messageTime
+            messagePreview.text = chat.messageText
 
-    fun createItem(chat: Chat) {
-        // постоянные поля
-        userName.text = chat.userName
-        messageText.text = chat.messageText
-        messageTime.text = chat.messageTime
-        userPhoto.setImageResource(chat.userPhoto) // добавить потом картинки
+            //дополнительные иконки
+            if (chat.isMuted) imageMute.visibility = View.VISIBLE else imageMute.visibility = View.GONE
+            if (chat.isOfficial) imageOfficial.visibility = View.VISIBLE else imageOfficial.visibility = View.GONE
+            if (chat.isScam) imageScam.visibility = View.VISIBLE else imageScam.visibility = View.GONE
 
-        // дополнительные иконки
-        if (chat.isMuted) isMuted.visibility = View.VISIBLE else isMuted.visibility = View.GONE
-        if (chat.isOfficial) isOfficial.visibility = View.VISIBLE else isOfficial.visibility = View.GONE
-        if (chat.isScam) isScam.visibility = View.VISIBLE else isScam.visibility = View.GONE
-
-        // информация о сообщении
-        if (chat.userDetails != "") {
-            chatDetails.visibility = View.VISIBLE
+            //информация о сообщении
             chatDetails.text = chat.userDetails
-        } else {
-            chatDetails.visibility = View.GONE
+            chatDetails.visibility = if (chatDetails.text == "") View.GONE else View.VISIBLE
+            messageImagePreview.setImageResource(chat.messagePhoto)
+            messageImagePreview.visibility = if (chat.messagePhoto == 0) View.GONE else View.VISIBLE
+            iconRead.visibility = if (chat.isRead) View.VISIBLE else View.GONE
+            messageCount.text = chat.newMessageCount.toString()
+            messageCount.visibility = if (chat.newMessageCount == 0) View.GONE else View.VISIBLE
+
         }
-
-        if (chat.messagePhoto != 0) {
-            messagePhoto.visibility = View.VISIBLE
-            messagePhoto.setImageResource(chat.messagePhoto)
-        } else {
-            messagePhoto.visibility = View.GONE
-        }
-
-        if (chat.newMessageCount == 0) {
-            newMessagesCount.visibility = View.GONE
-        } else {
-            newMessagesCount.text = chat.newMessageCount.toString()
-        }
-
-        if (chat.isRead) isRead.visibility = View.VISIBLE else isRead.visibility = View.GONE
-
     }
-
 }

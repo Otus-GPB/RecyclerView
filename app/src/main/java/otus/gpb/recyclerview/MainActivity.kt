@@ -6,22 +6,24 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.channels.ReceiveChannel
+import otus.gpb.recyclerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val chatList = ChatList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val chatAdapter = ChatAdapter()
-        recyclerView.adapter = chatAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        chatAdapter.createChatList(generateRandomChatList())
-
+        binding.recyclerView.adapter = chatAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
         ContextCompat.getDrawable(this, R
             .drawable.divider)?.let { CustomChatDecorator(it) }
-            ?.let { recyclerView.addItemDecoration(it) }
+            ?.let { binding.recyclerView.addItemDecoration(it) }
+
 
         val swipeToDeleteCallback = object : SwipeToDeleteListener(this){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -30,19 +32,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
-        itemTouchHelper.attachToRecyclerView(recyclerView)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
 
-        recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+        binding.recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0 && (recyclerView.layoutManager as LinearLayoutManager)
                         .findLastCompletelyVisibleItemPosition() == (recyclerView.layoutManager
                             as LinearLayoutManager).itemCount - 1) {
-                        chatAdapter.addItems(generateRandomChatList())
+                        chatAdapter.addItems(chatList.generateRandomChatList())
                     }
             }
         })
-
+        chatAdapter.submitList(chatList.generateRandomChatList())
 
     }
 }

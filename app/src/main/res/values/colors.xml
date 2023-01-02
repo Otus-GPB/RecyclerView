@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#3D95D4</color>
     <color name="white_gray">#D9D9D9</color>
+    <color name="dark_jungle_green">#222222</color>
+    <color name="gravel">#434449</color>
+    <color name="oslo_grey">#8D8E90</color>
 </resources>
