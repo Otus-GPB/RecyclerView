@@ -30,6 +30,61 @@ class ChatItem {
             "Okay",
             "Wed",
         ),
+                Chat(
+            4,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
+            "Ronaldo",
+            "How are u?",
+            "Fri",
+        ),
+        Chat(
+            5,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
+            "Trinity",
+            "Okay",
+            "Wed",
+        ),
+        Chat(
+            6,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
+            "Ronaldo",
+            "How are u?",
+            "Fri",
+        ),
+        Chat(
+            7,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
+            "Trinity",
+            "Okay",
+            "Wed",
+        ),
+                Chat(
+            8,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
+            "Ronaldo",
+            "How are u?",
+            "Fri",
+        ),
+        Chat(
+            9,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
+            "Trinity",
+            "Okay",
+            "Wed",
+        ),Chat(
+            10,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
+            "Ronaldo",
+            "How are u?",
+            "Fri",
+        ),
+        Chat(
+            11,
+            "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
+            "Trinity",
+            "Okay",
+            "Wed",
+        ),
     )
 
     fun chatItem() = someList
