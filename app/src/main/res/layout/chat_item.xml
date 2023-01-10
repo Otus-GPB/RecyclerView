@@ -36,8 +36,22 @@
         android:layout_marginTop="8dp"
         android:text="@string/name"
         android:textSize="16sp"
+        android:fontFamily="Roboto"
+        android:textColor="#222222"
         android:textFontWeight="500"
         app:layout_constraintStart_toEndOf="@+id/picture_card"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/muted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_muted"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@id/user_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

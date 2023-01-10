@@ -1,11 +1,13 @@
 package otus.gpb.recyclerview
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.DividerItemDecoration
+//import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(this)
         adapter.submitList(item.chatItem())
-        recycler.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recycler.addItemDecoration(createDivider(this, LinearLayoutManager(this)))
 
         val swipeToDeleteCallback: SwipeToDeleteCallback = object: SwipeToDeleteCallback(this){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -43,5 +45,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    fun createDivider(
+        context: Context, layoutManager: LinearLayoutManager
+    ): RecyclerView.ItemDecoration {
+        val dividerItemDecoration = MaterialDividerItemDecoration(context, layoutManager.orientation
+        )
+        dividerItemDecoration.setDividerInsetStartResource(this, R.dimen.divider_offset)
+        dividerItemDecoration.setDividerColorResource(this, R.color.light_grey)
+        dividerItemDecoration.setDividerThicknessResource(this, R.dimen.divider_thickness)
+
+        return dividerItemDecoration
     }
 }

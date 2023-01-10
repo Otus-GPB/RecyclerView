@@ -8,6 +8,8 @@ class ChatItem {
             "Warhol",
             "Yes",
             "11:38",
+            false
+
         ),
         Chat(
             1,
@@ -15,6 +17,7 @@ class ChatItem {
             "Batman",
             "I love sky",
             "12:44",
+            true
         ),
         Chat(
             2,
@@ -22,6 +25,7 @@ class ChatItem {
             "Ronaldo",
             "How are u?",
             "Fri",
+            false
         ),
         Chat(
             3,
@@ -29,61 +33,70 @@ class ChatItem {
             "Trinity",
             "Okay",
             "Wed",
+            true
         ),
                 Chat(
             4,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
-            "Ronaldo5",
+            "Ronaldo 5",
             "How are u?",
             "Fri",
+                    false
         ),
         Chat(
             5,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
-            "Trinity6",
+            "Trinity 6",
             "Okay",
             "Wed",
+            true
         ),
         Chat(
             6,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
-            "Ronaldo7",
+            "Ronaldo 7",
             "How are u?",
             "Fri",
+            false
         ),
         Chat(
             7,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
-            "Trinity8",
+            "Trinity 8",
             "Okay",
             "Wed",
+            false
         ),
                 Chat(
             8,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
-            "Ronaldo9",
+            "Ronaldo 9",
             "How are u?",
             "Fri",
+            false
         ),
         Chat(
             9,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
-            "10",
+            "Mate 10",
             "Okay",
             "Wed",
+            true
         ),Chat(
             10,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/cristiano-ronaldo-icon.png",
-            "11",
+            "Mate 11",
             "How are u?",
             "Fri",
+            true
         ),
         Chat(
             11,
             "https://icons.iconarchive.com/icons/diversity-avatars/avatars/64/trinity-icon.png",
-            "12",
+            "Mate 12",
             "Okay",
             "Wed",
+            false
         ),
     )
 

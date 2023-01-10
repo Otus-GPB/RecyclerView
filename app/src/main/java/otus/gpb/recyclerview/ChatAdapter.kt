@@ -26,6 +26,7 @@ class ChatViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     private var userName = view.findViewById<TextView>(R.id.user_name)
     private var message = view.findViewById<TextView>(R.id.message)
     private var date = view.findViewById<TextView>(R.id.date)
+    private var muted = view.findViewById<ImageView>(R.id.muted)
 
 
     fun populate(chat: Chat) {
@@ -37,5 +38,9 @@ class ChatViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
             .load(chat.picture)
             .placeholder(R.drawable.ava_pic)
             .into(userPic)
+
+        if (chat.isMuted) {
+            muted.visibility = View.INVISIBLE
+        }
     }
 }
